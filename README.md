@@ -37,3 +37,4 @@ Repositório para disponibilizar conteúdo e projetos desenvolvidos no curso de 
 ### Referências
 - Android Developers http://developer.android.com/develop/index.html
 - Android for Beginner - Udacity https://classroom.udacity.com/courses/ud837
+- Material color palette - https://www.google.com/design/spec/style/color.html#color-color-palette
