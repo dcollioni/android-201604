@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Menu App</string>
+    <string name="novo">Novo</string>
+    <string name="excluir_todos">Excluir todos</string>
+    <string name="sobre">Sobre</string>
+
+</resources>
