@@ -1,0 +1,7 @@
+- onCreate
+- onResume
+- onPause
+- onStop
+- onDestroy
+- onRestart
+- Log
