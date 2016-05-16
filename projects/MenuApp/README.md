@@ -1,0 +1,5 @@
+- Menu da Activity
+- Adicionando um menu à Activity
+- Tratando o click nos itens do menu
+- Menu de contexto na ListView
+- Tratando o click nos itens do menu de contexto
