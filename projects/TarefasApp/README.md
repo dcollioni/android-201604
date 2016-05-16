@@ -1,0 +1,3 @@
+- Adapter customizado
+- ViewHolder
+- Layout customizado para itens da ListView
