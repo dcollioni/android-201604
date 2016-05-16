@@ -1,0 +1,4 @@
+- Intents
+- Abrindo uma nova Activity (filha e independente)
+- Passando valores para uma nova Activity
+- Recebendo valores de uma Activity fechada
