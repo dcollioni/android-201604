@@ -24,7 +24,10 @@ public class MainActivity extends AppCompatActivity {
         tarefas.add(new Tarefa("Teste 2", "Alta"));
         tarefas.add(new Tarefa("Teste 3", "Baixa"));
 
-        adapter = new TarefaAdapter(MainActivity.this, tarefas);
+        adapter = new TarefaAdapter(
+                MainActivity.this,
+                tarefas
+        );
 
         lvTarefas.setAdapter(adapter);
     }

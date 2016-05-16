@@ -3,5 +3,7 @@
     <string name="novo">Novo</string>
     <string name="excluir_todos">Excluir todos</string>
     <string name="sobre">Sobre</string>
+    <string name="detalhes">Detalhes</string>
+    <string name="excluir">Excluir</string>
 
 </resources>

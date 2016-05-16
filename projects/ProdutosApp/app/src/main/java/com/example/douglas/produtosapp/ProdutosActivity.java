@@ -27,11 +27,34 @@ public class ProdutosActivity extends AppCompatActivity {
 
         configurarLvProdutos();
 
-        // TODO: pegar a categoria recebida
+        String categoria =
+                getIntent().getStringExtra(
+                        MainActivity.BUNDLE_CATEGORIA
+                );
 
-        // TODO: alterar título com o nome da categoria
+        setTitle(
+                String.format("Produtos (%s)", categoria)
+        );
 
-        // TODO: carregar produtos da categoria
+        switch (categoria) {
+            case "Informática":
+                produtos.add(new Produto("101", "Laptop"));
+                produtos.add(new Produto("102", "Smartphone"));
+                produtos.add(new Produto("103", "Tablet"));
+                break;
+            case "Papelaria":
+                produtos.add(new Produto("201", "Caderno"));
+                produtos.add(new Produto("202", "Grampeador"));
+                produtos.add(new Produto("203", "Pasta"));
+                break;
+            case "Outros":
+                produtos.add(new Produto("301", "Item A"));
+                produtos.add(new Produto("302", "Item B"));
+                produtos.add(new Produto("303", "Item C"));
+                break;
+        }
+        adapter.notifyDataSetChanged();
+
     }
 
     private void configurarLvProdutos() {
@@ -50,10 +73,33 @@ public class ProdutosActivity extends AppCompatActivity {
         lvProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // TODO: abrir activity de detalhes do produto
+                Produto produto = (Produto)
+                        parent.getItemAtPosition(position);
+
+                Intent intent = new Intent(
+                        ProdutosActivity.this,
+                        DetalheProdutoActivity.class
+                );
+
+                intent.putExtra(
+                        BUNDLE_PRODUTO,
+                        produto
+                );
+
+                startActivityForResult(intent, 0);
             }
         });
     }
 
-    // TODO: tratar retorno
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        String retorno = data.getStringExtra(
+                DetalheProdutoActivity.RETORNO
+        );
+
+        Toast.makeText(
+                ProdutosActivity.this,
+                retorno + " " + resultCode,
+                Toast.LENGTH_SHORT).show();
+    }
 }

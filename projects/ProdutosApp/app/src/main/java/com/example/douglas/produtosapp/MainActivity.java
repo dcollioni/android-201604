@@ -43,7 +43,19 @@ public class MainActivity extends AppCompatActivity {
         lvCategorias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // TODO: abrir activity de produtos passando a categoria
+                String categoria =
+                        parent.getItemAtPosition(position)
+                                .toString();
+
+                Intent intent = new Intent(
+                        MainActivity.this,
+                        ProdutosActivity.class
+                );
+                intent.putExtra(
+                        BUNDLE_CATEGORIA,
+                        categoria
+                );
+                startActivity(intent);
             }
         });
     }
@@ -58,7 +70,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_nova_categoria:
-                // TODO: abrir activity nova categoria
+                Intent intent = new Intent(
+                        MainActivity.this,
+                        NovaCategoriaActivity.class
+                );
+                startActivity(intent);
                 return true;
         }
 

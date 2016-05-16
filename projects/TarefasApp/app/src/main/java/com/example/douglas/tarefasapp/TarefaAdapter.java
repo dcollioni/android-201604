@@ -44,7 +44,9 @@ public class TarefaAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position,
+                        View convertView,
+                        ViewGroup parent) {
         // declara um objeto ViewHolder
         ViewHolder viewHolder;
 
@@ -77,9 +79,29 @@ public class TarefaAdapter extends BaseAdapter {
         // testa se a tarefa não é nula
         if (tarefa != null) {
 
-            // TODO: pegar os valores das propriedades da tarefa
+            String descricao = tarefa.getDescricao();
+            String prioridade = tarefa.getPrioridade();
 
-            // TODO: preencher os elementos com os valores
+            viewHolder.tvDescricao.setText(descricao);
+            viewHolder.tvPrioridade.setText(prioridade);
+
+            switch (prioridade) {
+                case "Alta":
+                    viewHolder.ivIcone.setImageResource(
+                            R.drawable.warning_red
+                    );
+                    break;
+                case "Média":
+                    viewHolder.ivIcone.setImageResource(
+                            R.drawable.warning_yellow
+                    );
+                    break;
+                case "Baixa":
+                    viewHolder.ivIcone.setImageResource(
+                            R.drawable.warning_blue
+                    );
+                    break;
+            }
         }
 
         // retorna o convertView
@@ -89,7 +111,7 @@ public class TarefaAdapter extends BaseAdapter {
     public static class ViewHolder {
 
         public final ImageView ivIcone;
-        public final TextView tvDescricao;
+        public final TextView tvDescricao, tvPrioridade;
 
         public ViewHolder(View view) {
 
@@ -98,6 +120,9 @@ public class TarefaAdapter extends BaseAdapter {
 
             tvDescricao = (TextView)
                     view.findViewById(R.id.tv_descricao);
+
+            tvPrioridade = (TextView)
+                    view.findViewById(R.id.tv_prioridade);
         }
 
     }

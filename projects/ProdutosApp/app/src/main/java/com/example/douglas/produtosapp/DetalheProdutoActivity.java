@@ -28,21 +28,34 @@ public class DetalheProdutoActivity extends AppCompatActivity {
         btComprar = (Button) findViewById(R.id.bt_comprar);
         btVender = (Button) findViewById(R.id.bt_vender);
 
-        // TODO: pegar o produto recebido
+        Produto produto = (Produto)
+                getIntent()
+                        .getSerializableExtra(
+                                ProdutosActivity.BUNDLE_PRODUTO);
 
-        // TODO: popular text views com os dados do produto
+        tvCodigoProduto.setText(
+                "Código: " + produto.getCodigo());
+
+        tvDescricaoProduto.setText(
+                "Descrição: " + produto.getDescricao());
 
         btComprar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: retornar comando e finalizar
+                Intent intent = new Intent();
+                intent.putExtra(RETORNO, "comprar");
+                setResult(1, intent);
+                finish();
             }
         });
 
         btVender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: retornar comando e finalizar
+                Intent intent = new Intent();
+                intent.putExtra(RETORNO, "vender");
+                setResult(2, intent);
+                finish();
             }
         });
     }

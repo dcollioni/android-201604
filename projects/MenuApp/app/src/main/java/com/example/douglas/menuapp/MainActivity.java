@@ -3,10 +3,15 @@ package com.example.douglas.menuapp;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -37,5 +42,80 @@ public class MainActivity extends AppCompatActivity {
                 itens);
 
         lvItens.setAdapter(adapter);
+
+        registerForContextMenu(lvItens);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(
+                R.menu.main,
+                menu
+        );
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_novo:
+                Toast.makeText(
+                        MainActivity.this,
+                        "Novo...",
+                        Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.menu_excluir_tudo:
+                itens.clear();
+                adapter.notifyDataSetChanged();
+                return true;
+
+            case R.id.menu_sobre:
+                new AlertDialog
+                        .Builder(MainActivity.this)
+                        .setTitle("Menu App")
+                        .setMessage("Versão 1.0.0")
+                        .create()
+                        .show();
+                return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu,
+                                    View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        if (v.getId() == R.id.lv_itens) {
+            getMenuInflater()
+                    .inflate(R.menu.itens, menu);
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+
+        AdapterView.AdapterContextMenuInfo info =
+                (AdapterView.AdapterContextMenuInfo)
+                        item.getMenuInfo();
+
+        int position = info.position;
+
+        switch (item.getItemId()) {
+            case R.id.menu_detalhes:
+                Toast.makeText(
+                        MainActivity.this,
+                        itens.get(position),
+                        Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.menu_excluir:
+                itens.remove(position);
+                adapter.notifyDataSetChanged();
+                return true;
+        }
+
+        return false;
     }
 }
