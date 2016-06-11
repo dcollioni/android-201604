@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Consulta Cep</string>
+    <string name="consultar">Consultar</string>
+    <string name="cep">CEP</string>
+    <string name="cep_nao_encontrado">CEP não encontrado</string>
+    <string name="consultando">Consultando…</string>
+</resources>
